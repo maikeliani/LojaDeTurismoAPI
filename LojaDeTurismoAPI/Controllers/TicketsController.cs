@@ -90,16 +90,16 @@ namespace LojaDeTurismoAPI.Controllers
           {
               return Problem("Entity set 'LojaDeTurismoAPIContext.Ticket'  is null.");
           }
-            //COLOKEI
-            var address = await _context.Address.FirstAsync(x => x.Id == ticket.Id); //inserido no exercicio
+          /*  //COLOKEI
+            var address_ticket = await _context.Address.FirstAsync(x => x.Id == ticket.Id); //inserido no exercicio
 
-            if (address == null) // inserido no exercicio ( vai dar um POST em um client e insere apenas o Id da rua  ( desde que ja tenha a rua criada - pega o Id de alguma rua criada)
+            if (address_ticket == null) // inserido no exercicio ( vai dar um POST em um client e insere apenas o Id da rua  ( desde que ja tenha a rua criada - pega o Id de alguma rua criada)
             {
                 return NotFound();
-                ;
+                
             }
 
-            ticket.SourceAdress = address;
+            ticket.SourceAdress = address_ticket;*/
             //FINAL DO CODIGO Q INSERI
 
             _context.Ticket.Add(ticket);

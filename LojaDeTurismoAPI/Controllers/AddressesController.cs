@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LojaDeTurismoAPI.Data;
 using LojaDeTurismoAPI.Models;
+using System.Net.Sockets;
 
 namespace LojaDeTurismoAPI.Controllers
 {
@@ -90,6 +91,19 @@ namespace LojaDeTurismoAPI.Controllers
           {
               return Problem("Entity set 'LojaDeTurismoAPIContext.Address'  is null.");
           }
+            //estou dando POST num address e quero ver se ja tem uma cidade com id igual a da cidade  desse endereço
+            //alterei aki  --> mudei o _context. City  ( pq ker pegar uma cidade)
+            var city = await _context.City.FirstAsync(x => x.Id == address.City.Id); //inserido no exercicio
+
+            if (city == null) // inserido no exercicio ( vai dar um POST em um client e insere apenas o Id da rua  ( desde que ja tenha a rua criada - pega o Id de alguma rua criada)
+            {
+                return NotFound();
+                ;
+            }
+
+            address.City = city;
+
+            //termina aki
             _context.Address.Add(address);
             await _context.SaveChangesAsync();
 
