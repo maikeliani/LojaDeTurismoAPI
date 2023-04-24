@@ -25,10 +25,10 @@ namespace LojaDeTurismoAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Client>>> GetClient()
         {
-          if (_context.Client == null)
-          {
-              return NotFound();
-          }
+            if (_context.Client == null)
+            {
+                return NotFound();
+            }
             return await _context.Client.ToListAsync();
         }
 
@@ -36,10 +36,10 @@ namespace LojaDeTurismoAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Client>> GetClient(int id)
         {
-          if (_context.Client == null)
-          {
-              return NotFound();
-          }
+            if (_context.Client == null)
+            {
+                return NotFound();
+            }
             var client = await _context.Client.FindAsync(id);
 
             if (client == null)
@@ -86,10 +86,20 @@ namespace LojaDeTurismoAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Client>> PostClient(Client client)
         {
-          if (_context.Client == null)
-          {
-              return Problem("Entity set 'LojaDeTurismoAPIContext.Client'  is null.");
-          }
+            if (_context.Client == null)
+            {
+                return Problem("Entity set 'LojaDeTurismoAPIContext.Client'  is null.");
+            }
+
+            var address = await _context.Address.FirstAsync(x => x.Id == client.Adress.Id);
+
+            if (address == null)
+            {
+                return NotFound();
+
+            }
+            client.Adress = address;
+
             _context.Client.Add(client);
             await _context.SaveChangesAsync();
 

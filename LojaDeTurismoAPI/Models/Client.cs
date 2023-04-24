@@ -6,7 +6,7 @@
         public string Name { get; set; }
         public string Telephone { get; set; }
 
-        public Address Adress { get; set; }
+        public Address? Adress { get; set; }
 
         public DateTime Dt_Register { get; set; }
     }

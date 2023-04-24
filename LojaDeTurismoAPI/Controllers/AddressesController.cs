@@ -101,7 +101,7 @@ namespace LojaDeTurismoAPI.Controllers
             if (city == null) 
             {
                 return NotFound();
-                ;
+                
             }
 
             address.City = city;
