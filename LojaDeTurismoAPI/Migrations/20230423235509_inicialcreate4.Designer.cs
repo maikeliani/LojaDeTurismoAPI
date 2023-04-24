@@ -4,6 +4,7 @@ using LojaDeTurismoAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LojaDeTurismoAPI.Migrations
 {
     [DbContext(typeof(LojaDeTurismoAPIContext))]
-    partial class LojaDeTurismoAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20230423235509_inicialcreate4")]
+    partial class inicialcreate4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

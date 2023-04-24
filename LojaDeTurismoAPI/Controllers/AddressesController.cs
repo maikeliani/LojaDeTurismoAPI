@@ -30,7 +30,9 @@ namespace LojaDeTurismoAPI.Controllers
           {
               return NotFound();
           }
-            return await _context.Address.ToListAsync();
+            var address = await _context.Address.Include(a => a.City).ToListAsync();
+
+            return address;
         }
 
         // GET: api/Addresses/5
@@ -41,7 +43,9 @@ namespace LojaDeTurismoAPI.Controllers
           {
               return NotFound();
           }
-            var address = await _context.Address.FindAsync(id);
+
+
+            var address = await _context.Address.Include(a => a.City).Where(a => a.Id == id).FirstOrDefaultAsync();
 
             if (address == null)
             {

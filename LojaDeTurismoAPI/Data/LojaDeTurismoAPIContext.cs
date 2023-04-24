@@ -21,5 +21,9 @@ namespace LojaDeTurismoAPI.Data
         public DbSet<LojaDeTurismoAPI.Models.Client>? Client { get; set; }
 
         public DbSet<LojaDeTurismoAPI.Models.Ticket>? Ticket { get; set; }
+
+        public DbSet<LojaDeTurismoAPI.Models.Hotel>? Hotel { get; set; }
+
+        public DbSet<LojaDeTurismoAPI.Models.Package>? Package { get; set; }
     }
 }
