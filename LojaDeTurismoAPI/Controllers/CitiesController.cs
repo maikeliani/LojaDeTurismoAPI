@@ -90,18 +90,7 @@ namespace LojaDeTurismoAPI.Controllers
           {
               return Problem("Entity set 'LojaDeTurismoAPIContext.City'  is null.");
           }
-       /*   //comecei
-            var address = await _context.Address.FirstAsync(x => x.Id == city.Id); 
-
-            if (address == null) 
-            {
-                return NotFound();
-                
-            }
-
-            city.Address = address;
-
-            //terminei*/
+       
 
             _context.City.Add(city);
             await _context.SaveChangesAsync();
